@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* to set custom properties */
+:root {
+  --line-border-fill: #3498db;
+  --line-border-empty: #e0e0e0;
+}
+
+/* to keep width of all elements */
+* {
+  box-sizing: border-box;
+}
+body {
+  background-color: #f6f7fb;
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  align-items: center;
+  /* use justify content to center vertically, but you need to add height to the body */
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+}
+
+.container {
+  text-align: center;
+}
+
+.progress-container {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin-bottom: 30px;
+  max-width: 100%;
+  width: 350px;
+}
+
+/* the faint grey line going across behind the blue */
+.progress-container::before {
+  content: ''; /* when using before or after add this */
+  background-color: var(--line-border-empty);
+  position: absolute;
+  top: 50%; /* al medio de los numeros */
+  left: 0; /* para que empiece al principio lef to right */
+  height: 4px; /*el grosor de la linea */
+  transform: translateY(
+    -50%
+  ); /* to really place the line in the middle middle */
+  width: 100%; /* because it reprresents the empty line */
+  z-index: -1; /* to place it behind the number */
+}
+
+/* the blue line going across the numbers */
+.progress {
+  background-color: var(--line-border-fill);
+  position: absolute;
+  top: 50%; /* al medio de los numeros */
+  left: 0; /* para que empiece al principio lef to right */
+  height: 4px; /*el grosor de la linea */
+  transform: translateY(
+    -50%
+  ); /* to really place the line in the middle middle */
+  width: 0;
+  z-index: -1; /* to place it behind the number */
+  transition: 0.4s ease;
+}
+
+.circle {
+  background-color: white;
+  color: #999;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  /* To center the numbers in the center of the circles */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid var(--line-border-empty);
+  transition: 0.4s ease;
+}
+
+circle.active {
+  border-color: var(--line-border-fill);
+}
+
+.btn {
+  background-color: var(--line-border-fill);
+  color: white;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 8px 30px;
+  margin: 5px;
+  font-size: 14px;
+}
+
+/* Makes the button plumper when pressed */
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn:focus {
+  outline: 0;
+}
+
+.btn:disabled {
+  background-color: var(--line-border-empty);
+  cursor: not-allowed;
+}
