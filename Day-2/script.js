@@ -15,8 +15,8 @@ next.addEventListener('click', () => {
 })
 
 prev.addEventListener('click', () => {
-    currentActive--;
-    console.log(currentActive);
+    currentActive--
+    console.log(currentActive)
     if(currentActive < 1) {
         currentActive = 1
     }
@@ -25,13 +25,13 @@ prev.addEventListener('click', () => {
 })
 
 function update() {
-    circles.forEach((circle, indx) => {
-        if(indx < currentActive) {
+    circles.forEach((circle, idx) => {
+        if(idx < currentActive) {
             circle.classList.add('active')
         } else {
             circle.classList.remove('active')
         }
-    })
+    });
 
     const actives = document.querySelectorAll('.active')
     progress.style.width = (actives.length -1) / (circles.length -1) * 100 + '%';
